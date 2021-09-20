@@ -24,8 +24,7 @@ services:
       - "traefik.docker.network=traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ${PROJECTDIR}/traefik:/etc/traefik
-      - ${PROJECTDIR}/docker/shared:/shared
+      - ./docker/traefik:/etc/traefik
   portainer:
     image: portainer/portainer
     container_name: portainer
@@ -35,7 +34,7 @@ services:
       - "9000:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${PROJECTDIR}/portainer/data:/data
+      - ./docker/portainer/data:/data
     environment:
       - TZ=${TZ}
     networks:
@@ -61,8 +60,8 @@ services:
     domainname: ${DOMAINNAME}
     image: influxdb:latest
     volumes:
-      - ${PROJECTDIR}/influx/data:/var/lib/influxdb
-      - ${PROJECTDIR}/influx/config/:/etc/influxdb
+      - ./docker/influx/data:/var/lib/influxdb
+      - ./docker/influx/config/:/etc/influxdb
     environment:
       INFLUXDB_REPORTING_DISABLED: "true"
       INFLUXDB_ADMIN_ENABLED: "true"
@@ -100,7 +99,7 @@ services:
     domainname: ${DOMAINNAME}
     image: chronograf:latest
     volumes:
-      - ${PROJECTDIR}/chronograf/data:/var/lib/chronograf
+      - ./docker/chronograf/data:/var/lib/chronograf
     ports:
       - "8888:8888"
     environment:
@@ -126,7 +125,7 @@ services:
     domainname: ${DOMAINNAME}
     image: telegraf:latest
     volumes:
-      - ${PROJECTDIR}/telegraf/config:/etc/telegraf
+      - ./docker/telegraf/config:/etc/telegraf
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - traefik_proxy
