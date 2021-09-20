@@ -38,8 +38,3 @@ providers:
 log:
   level: DEBUG
   filePath: /var/log/traefik.log
-tracing:
-  serviceName: traefik
-  jaeger:
-    collector:
-        endpoint: http://192.168.4.110:14268/api/traces?format=jaeger.thrift

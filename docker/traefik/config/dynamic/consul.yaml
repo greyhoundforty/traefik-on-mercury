@@ -11,7 +11,7 @@ http:
       middlewares:
         - simpleAuth
       service: consul
-      rule: Host(`consul.lab.tiffany-family.net`)
+      rule: Host(`consul.lab.tiffany-family.com`)
       tls:
         certResolver: letsencrypt
   services:
