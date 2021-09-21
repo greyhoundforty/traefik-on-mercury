@@ -21,7 +21,6 @@ services:
       # Chances are, Traefik will tell you why.
       # Be careful in production as it exposes the traffic you might not want to expose.
       --log.level=DEBUG
-      --certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme.json
     labels:
       - "traefik.enable=true"
       - "traefik.backend=traefik"
