@@ -23,7 +23,7 @@ certificatesResolvers:
       email: ryantiffany@fastmail.com
       storage: acme.json
       dnsChallenge:
-        provider: dnsimple
+        provider: digitalocean
         delayBeforeCheck: 0
         resolvers:
           - '1.1.1.1:53'
@@ -32,6 +32,7 @@ providers:
   file:
     directory: /dynamic
     watch: true
+ 
   docker:
     exposedByDefault: false
     network: traefik
